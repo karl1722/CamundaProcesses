@@ -23,19 +23,44 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.star</groupId>
+            <artifactId>jira.client</artifactId>
+            <version>1.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.camunda.bpm</groupId>
+            <artifactId>camunda-engine-rest</artifactId>
+            <classifier>classes</classifier>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+                <dependency>
+                    <groupId>org.camunda.bpm.dmn</groupId>
+                    <artifactId>camunda-engine-dmn-bom</artifactId>
+                    <version>7.8.0</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency>
+        <dependency>
+            <groupId>org.camunda.bpm.dmn</groupId>
+            <artifactId>camunda-engine-dmn</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.12</version>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
