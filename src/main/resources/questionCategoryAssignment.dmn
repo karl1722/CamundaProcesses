@@ -24,7 +24,7 @@
           <text><![CDATA["Administration"]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_16fxmwx">
-          <text><![CDATA["administration"]]></text>
+          <text><![CDATA["hrdepartment"]]></text>
         </outputEntry>
       </rule>
       <rule id="row-552651963-4">
@@ -32,7 +32,7 @@
           <text><![CDATA["Other"]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ltr1is">
-          <text><![CDATA["administration"]]></text>
+          <text><![CDATA["hrdepartment"]]></text>
         </outputEntry>
       </rule>
     </decisionTable>
