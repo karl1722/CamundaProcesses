@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="definitions_089icw2" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="questionCategoryMapping" name="Question Category Mapping">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Question Category" camunda:inputVariable="">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>category</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_00cg3xx">
+          <text></text>
+        </inputValues>
+      </input>
+      <output id="output1" label="Answer Assignee" name="answerAssignee" typeRef="string" />
+      <rule id="row-552651963-2">
+        <inputEntry id="UnaryTests_0duzz8i">
+          <text><![CDATA["Technical"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_163hfpb">
+          <text><![CDATA["expert"]]></text>
+        </outputEntry>
+      </rule>
+      <rule id="row-552651963-3">
+        <inputEntry id="UnaryTests_0x216s0">
+          <text><![CDATA["Administration"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16fxmwx">
+          <text><![CDATA["administration"]]></text>
+        </outputEntry>
+      </rule>
+      <rule id="row-552651963-4">
+        <inputEntry id="UnaryTests_1hmnych">
+          <text><![CDATA["Other"]]></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ltr1is">
+          <text><![CDATA["administration"]]></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

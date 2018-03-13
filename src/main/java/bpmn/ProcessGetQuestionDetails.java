@@ -3,6 +3,7 @@ package bpmn;
 import java.util.logging.Logger;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import primary.jiraQuestionTicket;
 import primary.jiraRestClient;
 
 public class ProcessGetQuestionDetails implements JavaDelegate {
@@ -11,11 +12,12 @@ public class ProcessGetQuestionDetails implements JavaDelegate {
 
     public void execute(DelegateExecution execution) throws Exception {
 
-        String questionIssueKey = (String)execution.getVariable("jiraIssueKey");
+        String questionIssueKey = (String)execution.getVariable("questionIssueKey");
         jiraRestClient jiraClient = new jiraRestClient();
-        jiraClient.createAnswerTicket(questionIssueKey);
+        jiraQuestionTicket questionObject = jiraClient.getJiraQuestionTicketDetails(questionIssueKey);
 
-        LOGGER.info(String.format("Details of Jira Ticket {0} retrieved", questionIssueKey));
+        execution.setVariable("category",questionObject.getCategory());
+        LOGGER.info(String.format("Details of Jira Ticket [%s] retrieved", questionIssueKey));
     }
 }
 

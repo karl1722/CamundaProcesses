@@ -13,8 +13,10 @@ public class ProcessCreateAnswerTicket implements JavaDelegate{
     public void execute(DelegateExecution execution) throws Exception {
 
         String questionIssueKey = (String)execution.getVariable("questionIssueKey");
+        String assignee = (String)execution.getVariable("answerAssignee");
         jiraRestClient jiraClient = new jiraRestClient();
-        jiraClient.createAnswerTicket(questionIssueKey);
+        jiraClient.createAnswerTicket(questionIssueKey,assignee);
+
         LOGGER.info("Jira Answer Ticket Created ");
     }
 }

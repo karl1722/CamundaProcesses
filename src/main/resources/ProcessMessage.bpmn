@@ -26,7 +26,7 @@
       <bpmn:incoming>SequenceFlow_1j25w8v</bpmn:incoming>
       <bpmn:messageEventDefinition messageRef="Message_0lj0z28" camunda:class="bpmn.message.InstantiateProcessByMessageDelegate" />
     </bpmn:endEvent>
-    <bpmn:userTask id="Task_0hy3nz9">
+    <bpmn:userTask id="Task_0hy3nz9" name="User Task">
       <bpmn:incoming>SequenceFlow_06vc68b</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1j25w8v</bpmn:outgoing>
     </bpmn:userTask>
