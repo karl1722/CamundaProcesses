@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.11.3">
-  <bpmn:process id="Process_1" name="ProcessMessage" isExecutable="true">
+  <bpmn:process id="ProcessMessage" name="ProcessMessage" isExecutable="true" camunda:versionTag="v0.1">
     <bpmn:startEvent id="StartEvent_1" name="Start">
       <bpmn:outgoing>SequenceFlow_1a6ke1s</bpmn:outgoing>
     </bpmn:startEvent>
@@ -26,14 +26,14 @@
       <bpmn:incoming>SequenceFlow_1j25w8v</bpmn:incoming>
       <bpmn:messageEventDefinition messageRef="Message_0lj0z28" camunda:class="bpmn.message.InstantiateProcessByMessageDelegate" />
     </bpmn:endEvent>
-    <bpmn:userTask id="Task_0hy3nz9" name="User Task">
+    <bpmn:userTask id="Task_0hy3nz9">
       <bpmn:incoming>SequenceFlow_06vc68b</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1j25w8v</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmn:message id="Message_0lj0z28" name="messageToSend" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ProcessMessage">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="173" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
