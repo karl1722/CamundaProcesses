@@ -15,13 +15,13 @@
       <bpmn:incoming>SequenceFlow_1ha852d</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1r5933d" sourceRef="Task_0dkmwv0" targetRef="Task_1pw9igs" />
-    <bpmn:userTask id="Task_0dkmwv0" name="User Task">
+    <bpmn:userTask id="Task_0dkmwv0" name="User Task" camunda:assignee="demo">
       <bpmn:incoming>SequenceFlow_06s3vrz</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1r5933d</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="SequenceFlow_1bx8a1m" sourceRef="Task_1pw9igs" targetRef="Task_02629q7" />
     <bpmn:sequenceFlow id="SequenceFlow_166x2fp" sourceRef="Task_0ouqu2w" targetRef="Task_0yoq1el" />
-    <bpmn:userTask id="Task_0ouqu2w" name="User Task">
+    <bpmn:userTask id="Task_0ouqu2w" name="User Task" camunda:assignee="demo">
       <bpmn:incoming>SequenceFlow_1j6415q</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_166x2fp</bpmn:outgoing>
     </bpmn:userTask>
@@ -35,10 +35,26 @@
       <bpmn:outgoing>SequenceFlow_1j6415q</bpmn:outgoing>
     </bpmn:businessRuleTask>
     <bpmn:sequenceFlow id="SequenceFlow_1ha852d" sourceRef="Task_19dhj5p" targetRef="EndEvent_1y6hwfu" />
-    <bpmn:userTask id="Task_19dhj5p" name="User Task">
+    <bpmn:userTask id="Task_19dhj5p" name="User Task" camunda:assignee="demo">
       <bpmn:incoming>SequenceFlow_1ej66mz</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ha852d</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:textAnnotation id="TextAnnotation_043h7ji">
+      <bpmn:text>Start triggered automatically by receiving a specific message. </bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0hsbyzk" sourceRef="StartEvent_1" targetRef="TextAnnotation_043h7ji" />
+    <bpmn:textAnnotation id="TextAnnotation_0v6yxlj">
+      <bpmn:text>Make a GET request on the jira issue (EXT system) using the jira java client, then save the variables</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0pc8e90" sourceRef="Task_1pw9igs" targetRef="TextAnnotation_0v6yxlj" />
+    <bpmn:textAnnotation id="TextAnnotation_02mhccw">
+      <bpmn:text>Decide on the appropriate Assignee according to the question category</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0lkgvuh" sourceRef="Task_02629q7" targetRef="TextAnnotation_02mhccw" />
+    <bpmn:textAnnotation id="TextAnnotation_1meqil4">
+      <bpmn:text><![CDATA[Create a new Answer ticket on the INT Jira (POST). Populate fields with the stored question variables & assignee]]></bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0myzikf" sourceRef="Task_0yoq1el" targetRef="TextAnnotation_1meqil4" />
   </bpmn:process>
   <bpmn:message id="Message_0704cy6" name="message_startAnswerProcess" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -48,16 +64,20 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_06s3vrz_di" bpmnElement="SequenceFlow_06s3vrz">
         <di:waypoint xsi:type="dc:Point" x="-16" y="198" />
-        <di:waypoint xsi:type="dc:Point" x="49" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="18" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="18" y="244" />
+        <di:waypoint xsi:type="dc:Point" x="51" y="244" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="16.5" y="177" width="0" height="12" />
+          <dc:Bounds x="-12" y="215" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1ej66mz_di" bpmnElement="SequenceFlow_1ej66mz">
         <di:waypoint xsi:type="dc:Point" x="778" y="198" />
-        <di:waypoint xsi:type="dc:Point" x="821" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="797" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="797" y="244" />
+        <di:waypoint xsi:type="dc:Point" x="816" y="244" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="799.5" y="177" width="0" height="12" />
+          <dc:Bounds x="767" y="215" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="StartEvent_12byig1_di" bpmnElement="StartEvent_1">
@@ -67,20 +87,22 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1mv9151_di" bpmnElement="EndEvent_1y6hwfu">
-        <dc:Bounds x="961" y="180" width="36" height="36" />
+        <dc:Bounds x="848" y="338" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="969" y="220" width="20" height="12" />
+          <dc:Bounds x="856" y="378" width="20" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1r5933d_di" bpmnElement="SequenceFlow_1r5933d">
-        <di:waypoint xsi:type="dc:Point" x="149" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="151" y="244" />
+        <di:waypoint xsi:type="dc:Point" x="178" y="244" />
+        <di:waypoint xsi:type="dc:Point" x="178" y="198" />
         <di:waypoint xsi:type="dc:Point" x="204" y="198" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="176.5" y="177" width="0" height="12" />
+          <dc:Bounds x="148" y="215" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_1ohydcf_di" bpmnElement="Task_0dkmwv0">
-        <dc:Bounds x="49" y="158" width="100" height="80" />
+        <dc:Bounds x="51" y="204" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1bx8a1m_di" bpmnElement="SequenceFlow_1bx8a1m">
         <di:waypoint xsi:type="dc:Point" x="304" y="198" />
@@ -90,38 +112,70 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_166x2fp_di" bpmnElement="SequenceFlow_166x2fp">
-        <di:waypoint xsi:type="dc:Point" x="607" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="608" y="244" />
+        <di:waypoint xsi:type="dc:Point" x="643" y="244" />
+        <di:waypoint xsi:type="dc:Point" x="643" y="198" />
         <di:waypoint xsi:type="dc:Point" x="678" y="198" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="642.5" y="177" width="0" height="12" />
+          <dc:Bounds x="613" y="215" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_05i57rt_di" bpmnElement="Task_0ouqu2w">
-        <dc:Bounds x="507" y="158" width="100" height="80" />
+        <dc:Bounds x="508" y="204" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0yq6ajg_di" bpmnElement="Task_1pw9igs">
         <dc:Bounds x="204" y="158" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1j6415q_di" bpmnElement="SequenceFlow_1j6415q">
         <di:waypoint xsi:type="dc:Point" x="453" y="198" />
-        <di:waypoint xsi:type="dc:Point" x="507" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="481" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="481" y="244" />
+        <di:waypoint xsi:type="dc:Point" x="508" y="244" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="480" y="177" width="0" height="12" />
+          <dc:Bounds x="451" y="215" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BusinessRuleTask_0wkfgms_di" bpmnElement="Task_02629q7">
         <dc:Bounds x="353" y="158" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1ha852d_di" bpmnElement="SequenceFlow_1ha852d">
-        <di:waypoint xsi:type="dc:Point" x="921" y="198" />
-        <di:waypoint xsi:type="dc:Point" x="961" y="198" />
+        <di:waypoint xsi:type="dc:Point" x="866" y="284" />
+        <di:waypoint xsi:type="dc:Point" x="866" y="338" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="941" y="177" width="0" height="12" />
+          <dc:Bounds x="836" y="305" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_1ilzk1v_di" bpmnElement="Task_19dhj5p">
-        <dc:Bounds x="821" y="158" width="100" height="80" />
+        <dc:Bounds x="816" y="204" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_043h7ji_di" bpmnElement="TextAnnotation_043h7ji">
+        <dc:Bounds x="-67" y="52" width="253" height="42" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0hsbyzk_di" bpmnElement="Association_0hsbyzk">
+        <di:waypoint xsi:type="dc:Point" x="-23" y="184" />
+        <di:waypoint xsi:type="dc:Point" x="44" y="94" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0v6yxlj_di" bpmnElement="TextAnnotation_0v6yxlj">
+        <dc:Bounds x="245" y="6" width="185" height="74" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0pc8e90_di" bpmnElement="Association_0pc8e90">
+        <di:waypoint xsi:type="dc:Point" x="276" y="158" />
+        <di:waypoint xsi:type="dc:Point" x="318" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_02mhccw_di" bpmnElement="TextAnnotation_02mhccw">
+        <dc:Bounds x="254" y="318" width="169" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0lkgvuh_di" bpmnElement="Association_0lkgvuh">
+        <di:waypoint xsi:type="dc:Point" x="386" y="238" />
+        <di:waypoint xsi:type="dc:Point" x="351" y="318" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1meqil4_di" bpmnElement="TextAnnotation_1meqil4">
+        <dc:Bounds x="709" y="58" width="239" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0myzikf_di" bpmnElement="Association_0myzikf">
+        <di:waypoint xsi:type="dc:Point" x="765" y="158" />
+        <di:waypoint xsi:type="dc:Point" x="800" y="120" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

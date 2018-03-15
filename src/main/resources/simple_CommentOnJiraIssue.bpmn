@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.11.3">
   <bpmn:process id="comment-upon-update2" name="CommentUponUpdate2" isExecutable="true" camunda:versionTag="v0.1">
-    <bpmn:startEvent id="StartEvent_1" name="Start" camunda:formKey="embedded:app:forms/jira-ticket-transition.html">
+    <bpmn:startEvent id="StartEvent_1" name="Start of Process" camunda:formKey="embedded:app:forms/jira-ticket-transition.html">
       <bpmn:extensionElements>
         <camunda:formData />
       </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_10o58w1</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:endEvent id="EndEvent_1jknpi0" name="End">
+    <bpmn:endEvent id="EndEvent_1jknpi0" name="End of Process">
       <bpmn:incoming>SequenceFlow_08403hq</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_11gzobg</bpmn:incoming>
     </bpmn:endEvent>
@@ -36,19 +36,27 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${issueType == 'Question'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_06e7087" name="else" sourceRef="ExclusiveGateway_1aen4k9" targetRef="Task_0t77gfc" />
+    <bpmn:textAnnotation id="TextAnnotation_1ymozi6">
+      <bpmn:text>Manual start through the GUI, variables supplied via a html form</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1u93t0q" sourceRef="StartEvent_1" targetRef="TextAnnotation_1ymozi6" />
+    <bpmn:textAnnotation id="TextAnnotation_1crx8y2">
+      <bpmn:text>Is this a Question ticket? </bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_10ynpf0" sourceRef="ExclusiveGateway_1aen4k9" targetRef="TextAnnotation_1crx8y2" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="comment-upon-update2">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="336" y="183" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="342" y="219" width="25" height="12" />
+          <dc:Bounds x="316" y="220" width="25" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1jknpi0_di" bpmnElement="EndEvent_1jknpi0">
         <dc:Bounds x="870" y="302" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="878" y="351" width="20" height="12" />
+          <dc:Bounds x="858" y="351" width="20" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0cw82no_di" bpmnElement="Task_164dvvw">
@@ -110,6 +118,20 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="511" y="247" width="21" height="12" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1ymozi6_di" bpmnElement="TextAnnotation_1ymozi6">
+        <dc:Bounds x="219" y="53" width="182" height="74" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1u93t0q_di" bpmnElement="Association_1u93t0q">
+        <di:waypoint xsi:type="dc:Point" x="348" y="185" />
+        <di:waypoint xsi:type="dc:Point" x="325" y="127" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1crx8y2_di" bpmnElement="TextAnnotation_1crx8y2">
+        <dc:Bounds x="497" y="56" width="100" height="42" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_10ynpf0_di" bpmnElement="Association_10ynpf0">
+        <di:waypoint xsi:type="dc:Point" x="504" y="183" />
+        <di:waypoint xsi:type="dc:Point" x="539" y="98" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
