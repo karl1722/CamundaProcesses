@@ -37,13 +37,17 @@
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_06e7087" name="else" sourceRef="ExclusiveGateway_1aen4k9" targetRef="Task_0t77gfc" />
     <bpmn:textAnnotation id="TextAnnotation_1ymozi6">
-      <bpmn:text>Manual start through the GUI, variables supplied via a html form</bpmn:text>
+      <bpmn:text><![CDATA[Manual start through the GUI. Variables supplied via a html form (issue type, status & id)]]></bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1u93t0q" sourceRef="StartEvent_1" targetRef="TextAnnotation_1ymozi6" />
     <bpmn:textAnnotation id="TextAnnotation_1crx8y2">
       <bpmn:text>Is this a Question ticket? </bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_10ynpf0" sourceRef="ExclusiveGateway_1aen4k9" targetRef="TextAnnotation_1crx8y2" />
+    <bpmn:textAnnotation id="TextAnnotation_0q5gr5t">
+      <bpmn:text>POST request on jira ticket adding a comment</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_126tov5" sourceRef="Task_164dvvw" targetRef="TextAnnotation_0q5gr5t" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="comment-upon-update2">
@@ -120,11 +124,11 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1ymozi6_di" bpmnElement="TextAnnotation_1ymozi6">
-        <dc:Bounds x="219" y="53" width="182" height="74" />
+        <dc:Bounds x="219" y="53" width="182" height="55" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1u93t0q_di" bpmnElement="Association_1u93t0q">
         <di:waypoint xsi:type="dc:Point" x="348" y="185" />
-        <di:waypoint xsi:type="dc:Point" x="325" y="127" />
+        <di:waypoint xsi:type="dc:Point" x="320" y="108" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1crx8y2_di" bpmnElement="TextAnnotation_1crx8y2">
         <dc:Bounds x="497" y="56" width="100" height="42" />
@@ -132,6 +136,13 @@
       <bpmndi:BPMNEdge id="Association_10ynpf0_di" bpmnElement="Association_10ynpf0">
         <di:waypoint xsi:type="dc:Point" x="504" y="183" />
         <di:waypoint xsi:type="dc:Point" x="539" y="98" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0q5gr5t_di" bpmnElement="TextAnnotation_0q5gr5t">
+        <dc:Bounds x="725" y="62" width="145" height="51" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_126tov5_di" bpmnElement="Association_126tov5">
+        <di:waypoint xsi:type="dc:Point" x="704" y="165" />
+        <di:waypoint xsi:type="dc:Point" x="767" y="113" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
